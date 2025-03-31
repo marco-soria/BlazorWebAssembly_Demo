@@ -3,7 +3,7 @@
     public class Employee
     {
         public int IdEmployee { get; set; }
-        public string FullName { get; set; }
+        public string FullName { get; set; } = string.Empty;
         public int IdDepartment { get; set; }
         public int Salary { get; set; }
         public DateOnly DateContract { get; set; }

@@ -7,15 +7,14 @@ namespace Blazor.Client.Services
     public class DepartmentService : IDepartmentService
     {
         private readonly HttpClient _httpClient;
-
         public DepartmentService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
         public async Task<List<DepartmentDTO>> ListDepartments()
         {
-            var result = 
-                await _httpClient.GetFromJsonAsync<ResponseAPI<List<DepartmentDTO>>>("api/Department/Lista");
+            var result =
+                await _httpClient.GetFromJsonAsync<ResponseAPI<List<DepartmentDTO>>>("api/Departmento/Lista");
 
             if (result!.IsCorrect)
             {

@@ -1,6 +1,4 @@
-﻿
-
-page "/empleados"
+﻿@page "/empleados"
 
 @using Blazor.Shared;
 @using CurrieTechnologies.Razor.SweetAlert2;
@@ -27,7 +25,6 @@ page "/empleados"
 
         @if (listaEmpleado == null)
         {
-
             <tr>
                 <td colspan="5" align="center">
                     <img style="width:50px" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" />
@@ -62,8 +59,8 @@ page "/empleados"
 </table>
 
 @code {
-    List<EmployeeDTO>? listaEmpleado = null;
 
+    List<EmployeeDTO>? listaEmpleado = null;
 
     protected override async Task OnInitializedAsync()
     {
@@ -86,7 +83,6 @@ page "/empleados"
 
             if (eliminado)
                 listaEmpleado = listaEmpleado!.FindAll(e => e.IdEmployee != id);
-
         }
 
 

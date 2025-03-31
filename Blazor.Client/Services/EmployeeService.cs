@@ -14,8 +14,10 @@ namespace Blazor.Client.Services
 
         public async Task<List<EmployeeDTO>> ListEmployees()
         {
+            string fullRul = _httpClient.BaseAddress + "api/Empleado/Lista";
+
             var result =
-                await _httpClient.GetFromJsonAsync<ResponseAPI<List<EmployeeDTO>>>("api/Employee/Lista");
+                await _httpClient.GetFromJsonAsync<ResponseAPI<List<EmployeeDTO>>>("api/Empleado/Lista");
 
             if (result!.IsCorrect)
             {
@@ -29,7 +31,7 @@ namespace Blazor.Client.Services
         public async Task<EmployeeDTO> Buscar(int id)
         {
             var result =
-                await _httpClient.GetFromJsonAsync<ResponseAPI<EmployeeDTO>>($"api/Employee/Buscar/{id}");
+                await _httpClient.GetFromJsonAsync<ResponseAPI<EmployeeDTO>>($"api/Empleado/Buscar/{id}");
 
             if (result!.IsCorrect)
             {
@@ -44,7 +46,7 @@ namespace Blazor.Client.Services
         public async Task<int> Guardar(EmployeeDTO employeeDTO)
         {
             var result =
-                await _httpClient.PostAsJsonAsync("api/Employee/Guardar", employeeDTO);
+                await _httpClient.PostAsJsonAsync("api/Empleado/Guardar", employeeDTO);
 
             var response = await result.Content.ReadFromJsonAsync<ResponseAPI<int>>();
 
@@ -61,7 +63,7 @@ namespace Blazor.Client.Services
         public async Task<int> Editar(EmployeeDTO employeeDTO)
         {
             var result =
-                await _httpClient.PutAsJsonAsync($"api/Employee/Editar/{employeeDTO.IdEmployee}", employeeDTO);
+                await _httpClient.PutAsJsonAsync($"api/Empleado/Editar/{employeeDTO.IdEmployee}", employeeDTO);
 
             var response = await result.Content.ReadFromJsonAsync<ResponseAPI<int>>();
 
@@ -78,7 +80,7 @@ namespace Blazor.Client.Services
         public async Task<bool> Eliminar(int id)
         {
             var result =
-                await _httpClient.DeleteAsync($"api/Employee/Editar/{id}");
+                await _httpClient.DeleteAsync($"api/Empleado/Editar/{id}");
 
             var response = await result.Content.ReadFromJsonAsync<ResponseAPI<int>>();
 

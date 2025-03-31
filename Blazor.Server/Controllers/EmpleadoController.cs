@@ -63,7 +63,7 @@ namespace Blazor.Server.Controllers
             try
             {
                 var employeeFromDB = await _dbContext.Employees.FirstOrDefaultAsync(x => x.IdEmployee == id);
-                if (employeeFromDB is not null)
+                if (employeeFromDB != null)
                 {
                     employeeDto.IdEmployee = employeeFromDB.IdEmployee;
                     employeeDto.FullName = employeeFromDB.FullName;
@@ -141,7 +141,7 @@ namespace Blazor.Server.Controllers
                 var employeeFromDB =
                     await _dbContext.Employees.FirstOrDefaultAsync(x => x.IdEmployee == id);
 
-                if (employeeFromDB is not null)
+                if (employeeFromDB != null)
                 {
                     employeeFromDB.FullName = employeeDto.FullName;
                     employeeFromDB.IdDepartment = employeeDto.IdDepartment;
@@ -176,14 +176,16 @@ namespace Blazor.Server.Controllers
 
             try
             {
-                var employeeFromDB = await _dbContext.Employees.FirstOrDefaultAsync(x => x.IdEmployee == id);
-                if (employeeFromDB is not null)
+                var employeeFromDB =
+                    await _dbContext.Employees.FirstOrDefaultAsync(x => x.IdEmployee == id);
+
+                if (employeeFromDB != null)
                 {
                     _dbContext.Employees.Remove(employeeFromDB);
                     await _dbContext.SaveChangesAsync();
 
                     responseApi.IsCorrect = true;
-                    responseApi.Message = "Empleado eliminado con exito";
+                    responseApi.Message = "Empleado eliminado con Exito";
                 }
                 else
                 {
